@@ -4,7 +4,7 @@ import { CreatePlayerInput, GuildIdParams, PlayerFilters, UpdatePlayerDKPInput, 
 import primsa from "../utils/prisma";
 
 async function getById(input: IdParams) {
-  const player = await primsa.player.findFirst({ where: input });
+  const player = await primsa.player.findFirst({ where: { id: Number(input.id) } });
 
   return player;
 }

@@ -18,7 +18,7 @@ async function create(input: RegionInput) {
 
 async function remove(input: IdParams) {
   const region = await prisma.region.delete({
-    where: input,
+    where: { id: Number(input.id) },
   });
 
   return region;

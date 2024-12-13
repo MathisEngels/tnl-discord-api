@@ -21,8 +21,6 @@ const updateGuild = z.object({
   discordLeaderId: z.string().optional(),
   discordAdvisorIds: z.array(z.string()).optional(),
   discordMembersRoleId: z.string().optional(),
-  discordSaurollChannelId: z.string().optional(),
-  discordSaurollRoleId: z.string().optional(),
 });
 
 const removeGuild = z.object({

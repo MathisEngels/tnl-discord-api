@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
@@ -31,17 +31,15 @@ model Server {
 }
 
 model Guild {
-  id                      Int      @id @default(autoincrement())
-  discordGuildId          String   @unique
-  name                    String
-  server                  Server   @relation(fields: [serverId], references: [id])
-  serverId                Int
-  discordLeaderId         String   @unique
-  discordAdvisorIds       String[]
-  discordMembersRoleId    String
-  discordSaurollChannelId String?
-  discordSaurollRoleId    String?
-  players                 Player[]
+  id                   Int      @id @default(autoincrement())
+  discordGuildId       String   @unique
+  name                 String
+  server               Server   @relation(fields: [serverId], references: [id])
+  serverId             Int
+  discordLeaderId      String   @unique
+  discordAdvisorIds    String[]
+  discordMembersRoleId String
+  players              Player[]
 
   @@unique([name, serverId])
 }
@@ -60,4 +58,11 @@ model Player {
   serverId  Int
 
   @@unique([name, serverId])
+}
+
+model Sauroll {
+  id               Int     @id @default(autoincrement())
+  discordGuildId   String  @unique
+  discordChannelId String
+  discordRoleId    String?
 }

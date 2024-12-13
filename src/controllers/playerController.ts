@@ -24,7 +24,6 @@ export async function getPlayerById(req: FastifyRequest<{ Params: IdParams }>, r
 export async function getPlayerByDiscordId(req: FastifyRequest<{ Params: DiscordIdParams }>, reply: FastifyReply) {
   try {
     const player = await playerService.getByDiscordId(req.params);
-    console.log(req.params, player)
 
     return reply.send(player);
   } catch (error) {

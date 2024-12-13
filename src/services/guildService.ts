@@ -18,23 +18,6 @@ async function getByDiscordId(input: DiscordIdParams) {
   return guild;
 }
 
-async function getWithSauroll() {
-  const guilds = await prisma.guild.findMany({
-    where: {
-      NOT: {
-        discordSaurollChannelId: null,
-      },
-    },
-    select: {
-      id: true,
-      discordSaurollChannelId: true,
-      discordSaurollRoleId: true,
-    },
-  });
-
-  return guilds;
-}
-
 async function create(input: CreateGuildInput) {
   const { serverId, ...rest } = input;
 
@@ -62,7 +45,7 @@ async function update(input: UpdateGuildInput) {
   }
 
   const guild = await prisma.guild.update({
-    where: { id: id },
+    where: { id: Number(id) },
     data,
   });
 
@@ -77,4 +60,4 @@ async function remove(input: RemoveGuildInput) {
   return guild;
 }
 
-export default { getByServerId, getByDiscordId, getWithSauroll, create, update, remove };
+export default { getByServerId, getByDiscordId, create, update, remove };

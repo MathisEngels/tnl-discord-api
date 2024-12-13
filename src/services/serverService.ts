@@ -20,7 +20,7 @@ async function create(input: CreateServerInput) {
 
 async function remove(input: IdParams) {
   const server = await prisma.server.delete({
-    where: input,
+    where: { id: Number(input.id) },
   });
 
   return server;

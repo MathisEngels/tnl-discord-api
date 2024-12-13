@@ -24,23 +24,12 @@ export async function getGuildsByDiscordId(req: FastifyRequest<{ Params: Discord
   }
 }
 
-export async function getGuildWithSauroll(_: FastifyRequest, reply: FastifyReply) {
-  try {
-    const guild = await guildService.getWithSauroll();
-
-    return reply.send(guild);
-  } catch (error) {
-    reply.status(500).send({ error: "Failed to fetch guild" });
-  }
-}
-
 export async function createGuild(req: FastifyRequest<{ Body: CreateGuildInput }>, reply: FastifyReply) {
   try {
     await guildService.create(req.body);
 
     return reply.status(201).send();
   } catch (error) {
-    console.log(error);
     reply.status(500).send({ error: "Failed to create guild" });
   }
 }
