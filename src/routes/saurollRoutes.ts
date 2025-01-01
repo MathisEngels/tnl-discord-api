@@ -1,10 +1,10 @@
 import { FastifyInstance } from "fastify";
-import { getSaurollSubscriber, getSaurollSubscribers, subscribeToSauroll, unsubscribeFromSauroll, updateSaurollSubscription } from "../controllers/saurollController";
+import { getSaurollSubscriptionsByGuildId, getSaurollSubscriptions, subscribeToSauroll, unsubscribeFromSauroll, updateSaurollSubscription } from "../controllers/saurollController";
 import { idParamsSchema } from "../schema/commonSchemas";
 
 function saurollRoutes(app: FastifyInstance): void {
-  app.get("/", getSaurollSubscribers);
-  app.get("/:id", { schema: { params: idParamsSchema } }, getSaurollSubscriber);
+  app.get("/", getSaurollSubscriptions);
+  app.get("/:id", { schema: { params: idParamsSchema } }, getSaurollSubscriptionsByGuildId);
 
   app.post("/", subscribeToSauroll);
   app.put("/:id", { schema: { params: idParamsSchema } }, updateSaurollSubscription);

@@ -8,8 +8,8 @@ async function getAll() {
   return saurollers;
 }
 
-async function get(input: IdParams) {
-  const sauroller = await prisma.sauroll.findUnique({
+async function getAllByGuildId(input: IdParams) {
+  const sauroller = await prisma.sauroll.findMany({
     where: { discordGuildId: input.id },
   });
 
@@ -27,7 +27,7 @@ async function create(input: CreateSaurollInput) {
 async function update(input: UpdateSaurollInput) {
   const { id, ...rest } = input;
   const sauroll = await prisma.sauroll.update({
-    where: { discordGuildId: id },
+    where: { discordVoiceChannelId: id },
     data: rest,
   });
 
@@ -36,10 +36,10 @@ async function update(input: UpdateSaurollInput) {
 
 async function remove(input: IdParams) {
   const sauroller = await prisma.sauroll.delete({
-    where: { discordGuildId: input.id },
+    where: { discordVoiceChannelId: input.id },
   });
 
   return sauroller;
 }
 
-export default { getAll, get, create, update, remove };
+export default { getAll, getAllByGuildId, create, update, remove };

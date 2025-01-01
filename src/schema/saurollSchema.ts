@@ -3,17 +3,18 @@ import { IdParams } from "./commonSchemas";
 
 const createSauroll = z.object({
   discordGuildId: z.string(),
-  discordChannelId: z.string(),
+  discordVoiceChannelId: z.string(),
+  discordTextChannelId: z.string(),
   discordRoleId: z.string().optional(),
 });
 
 const updateSauroll = z.object({
-  discordChannelId: z.string().optional(),
+  discordTextChannelId: z.string().optional(),
   discordRoleId: z.string().optional(),
 });
 
 const removeSauroll = z.object({
-  discordGuildId: z.string(),
+  discordVoiceChannelId: z.string(),
 });
 
 export type CreateSaurollInput = z.infer<typeof createSauroll>;

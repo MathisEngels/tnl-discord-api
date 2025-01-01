@@ -61,8 +61,9 @@ model Player {
 }
 
 model Sauroll {
-  id               Int     @id @default(autoincrement())
-  discordGuildId   String  @unique
-  discordChannelId String
-  discordRoleId    String?
+  id                    Int     @id @default(autoincrement())
+  discordGuildId        String
+  discordVoiceChannelId String  @unique
+  discordTextChannelId  String
+  discordRoleId         String?
 }

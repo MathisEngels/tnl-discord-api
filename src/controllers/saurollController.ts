@@ -3,7 +3,7 @@ import saurollService from "../services/saurollService";
 import { IdParams } from "../schema/commonSchemas";
 import { CreateSaurollInput, UpdateSaurollBody } from "../schema/saurollSchema";
 
-export async function getSaurollSubscribers(_: FastifyRequest, reply: FastifyReply) {
+export async function getSaurollSubscriptions(_: FastifyRequest, reply: FastifyReply) {
   try {
     const subscribers = await saurollService.getAll();
 
@@ -13,11 +13,11 @@ export async function getSaurollSubscribers(_: FastifyRequest, reply: FastifyRep
   }
 }
 
-export async function getSaurollSubscriber(request: FastifyRequest<{ Params: IdParams }>, reply: FastifyReply) {
+export async function getSaurollSubscriptionsByGuildId(request: FastifyRequest<{ Params: IdParams }>, reply: FastifyReply) {
   try {
-    const subscriber = await saurollService.get(request.params);
+    const subscriptions = await saurollService.getAllByGuildId(request.params);
 
-    return reply.send(subscriber);
+    return reply.send(subscriptions);
   } catch (error) {
     reply.status(500).send({ error: "Failed to get sauroll subscriber" });
   }
