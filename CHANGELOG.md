@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/MathisEngels/tnl-discord-api/compare/v1.1.0...v1.2.0) (2025-01-01)
+
+
+### Features
+
+* handle multiple sauroll subscription per discord guild ([7f9f9d8](https://github.com/MathisEngels/tnl-discord-api/commit/7f9f9d820bbf7be92a1105561e40a97390722d24))
+
 # [1.1.0](https://github.com/MathisEngels/tnl-discord-api/compare/v1.0.0...v1.1.0) (2024-12-13)
 
 
