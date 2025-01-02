@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/MathisEngels/tnl-discord-api/compare/v1.2.0...v1.3.0) (2025-01-02)
+
+
+### Features
+
+* add a bit of error handling ([f3b1b02](https://github.com/MathisEngels/tnl-discord-api/commit/f3b1b026c61282b5cb092ee35225cca6c3432350))
+
 # [1.2.0](https://github.com/MathisEngels/tnl-discord-api/compare/v1.1.0...v1.2.0) (2025-01-01)
 
 
