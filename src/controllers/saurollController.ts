@@ -2,6 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import saurollService from "../services/saurollService";
 import { IdParams } from "../schema/commonSchemas";
 import { CreateSaurollInput, UpdateSaurollBody } from "../schema/saurollSchema";
+import { Prisma } from "@prisma/client";
 
 export async function getSaurollSubscriptions(_: FastifyRequest, reply: FastifyReply) {
   try {
@@ -39,6 +40,12 @@ export async function updateSaurollSubscription(request: FastifyRequest<{ Params
 
     return reply.send(guild);
   } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2001" || error.code === "P2025") {
+        return reply.status(204).send({ error: "No sauroll subscription found with the provided id" });
+      }
+    }
+
     reply.status(500).send({ error: "Failed to update sauroll subscription" });
   }
 }
@@ -49,6 +56,12 @@ export async function unsubscribeFromSauroll(request: FastifyRequest<{ Params: I
 
     return reply.send(guild);
   } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2001" || error.code === "P2025") {
+        return reply.status(204).send({ error: "No sauroll subscription found with the provided id" });
+      }
+    }
+
     reply.status(500).send({ error: "Failed to unsubscribe from sauroll" });
   }
 }
